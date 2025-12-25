@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, AreaChart, Area } from 'recharts';
 import './Scoreboard.css';
 
 function Scoreboard() {
@@ -133,6 +134,74 @@ function Scoreboard() {
                             </svg>
                             Friends
                         </button>
+                    </div>
+
+                    {/* Score Progression Graph */}
+                    <div className="score-graph-section card fade-in">
+                        <h2 className="graph-title">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                            Top 5 Score Progression
+                        </h2>
+                        <div className="graph-container">
+                            <ResponsiveContainer width="100%" height={300}>
+                                <AreaChart
+                                    data={[
+                                        { time: '0h', CyberPhoenix: 0, QuantumBreakers: 0, NullPointers: 0, BinaryNinjas: 0, HexDecoders: 0 },
+                                        { time: '6h', CyberPhoenix: 1200, QuantumBreakers: 1500, NullPointers: 900, BinaryNinjas: 1100, HexDecoders: 800 },
+                                        { time: '12h', CyberPhoenix: 2800, QuantumBreakers: 3100, NullPointers: 2400, BinaryNinjas: 2650, HexDecoders: 2100 },
+                                        { time: '18h', CyberPhoenix: 4500, QuantumBreakers: 4800, NullPointers: 4200, BinaryNinjas: 4100, HexDecoders: 3900 },
+                                        { time: '24h', CyberPhoenix: 6200, QuantumBreakers: 6500, NullPointers: 5800, BinaryNinjas: 5950, HexDecoders: 5600 },
+                                        { time: '30h', CyberPhoenix: 7100, QuantumBreakers: 7400, NullPointers: 6900, BinaryNinjas: 6800, HexDecoders: 6650 },
+                                        { time: '36h', CyberPhoenix: 7850, QuantumBreakers: 7900, NullPointers: 7450, BinaryNinjas: 7300, HexDecoders: 7100 },
+                                        { time: '42h', CyberPhoenix: 8200, QuantumBreakers: 8050, NullPointers: 7700, BinaryNinjas: 7550, HexDecoders: 7320 },
+                                        { time: '48h', CyberPhoenix: 8450, QuantumBreakers: 8120, NullPointers: 7890, BinaryNinjas: 7650, HexDecoders: 7420 },
+                                    ]}
+                                    margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+                                >
+                                    <defs>
+                                        <linearGradient id="colorCyber" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="5%" stopColor="#ef4444" stopOpacity={0.8} />
+                                            <stop offset="95%" stopColor="#ef4444" stopOpacity={0} />
+                                        </linearGradient>
+                                        <linearGradient id="colorQuantum" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8} />
+                                            <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
+                                        </linearGradient>
+                                        <linearGradient id="colorNull" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="5%" stopColor="#10b981" stopOpacity={0.8} />
+                                            <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
+                                        </linearGradient>
+                                        <linearGradient id="colorBinary" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="5%" stopColor="#a855f7" stopOpacity={0.8} />
+                                            <stop offset="95%" stopColor="#a855f7" stopOpacity={0} />
+                                        </linearGradient>
+                                        <linearGradient id="colorHex" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="5%" stopColor="#fbbf24" stopOpacity={0.8} />
+                                            <stop offset="95%" stopColor="#fbbf24" stopOpacity={0} />
+                                        </linearGradient>
+                                    </defs>
+                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(59, 130, 246, 0.1)" />
+                                    <XAxis dataKey="time" stroke="#94a3b8" />
+                                    <YAxis stroke="#94a3b8" />
+                                    <Tooltip
+                                        contentStyle={{
+                                            backgroundColor: '#0f1729',
+                                            border: '1px solid rgba(59, 130, 246, 0.2)',
+                                            borderRadius: '8px',
+                                            color: '#fff'
+                                        }}
+                                    />
+                                    <Legend />
+                                    <Area type="monotone" dataKey="CyberPhoenix" stroke="#ef4444" fillOpacity={1} fill="url(#colorCyber)" />
+                                    <Area type="monotone" dataKey="QuantumBreakers" stroke="#3b82f6" fillOpacity={1} fill="url(#colorQuantum)" />
+                                    <Area type="monotone" dataKey="NullPointers" stroke="#10b981" fillOpacity={1} fill="url(#colorNull)" />
+                                    <Area type="monotone" dataKey="BinaryNinjas" stroke="#a855f7" fillOpacity={1} fill="url(#colorBinary)" />
+                                    <Area type="monotone" dataKey="HexDecoders" stroke="#fbbf24" fillOpacity={1} fill="url(#colorHex)" />
+                                </AreaChart>
+                            </ResponsiveContainer>
+                        </div>
                     </div>
 
                     {/* Leaderboard Table */}

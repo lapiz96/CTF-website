@@ -122,6 +122,31 @@
     height: 20px;
 }
 
+/* Score Graph */
+.score-graph-section {
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.graph-title {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.graph-title svg {
+    color: var(--primary-blue);
+}
+
+.graph-container {
+    width: 100%;
+    padding: 1rem 0;
+}
+
 /* Leaderboard Table */
 .leaderboard-table {
     padding: 0;

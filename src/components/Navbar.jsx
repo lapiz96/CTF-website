@@ -50,6 +50,12 @@ function Navbar() {
                         Scoreboard
                     </Link>
                     <Link
+                        to="/about"
+                        className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}
+                    >
+                        About
+                    </Link>
+                    <Link
                         to="/mission-control"
                         className={`nav-link ${location.pathname === '/mission-control' ? 'active' : ''}`}
                     >

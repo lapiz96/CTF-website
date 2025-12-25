@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Challenges.css';
 
 function Challenges() {
@@ -179,10 +180,11 @@ function Challenges() {
                 <div className="container">
                     <div className="challenges-grid">
                         {filteredChallenges.map((challenge, index) => (
-                            <div
+                            <Link
                                 key={challenge.id}
+                                to={`/challenge/${challenge.id}`}
                                 className={`challenge-card card ${challenge.status === 'solved' ? 'solved' : ''}`}
-                                style={{ animationDelay: `${index * 0.1}s` }}
+                                style={{ animationDelay: `${index * 0.1}s`, textDecoration: 'none' }}
                             >
                                 {challenge.status === 'solved' && (
                                     <div className="solved-badge">
@@ -216,26 +218,11 @@ function Challenges() {
                                         <span>{challenge.solves} Solves</span>
                                     </div>
 
-                                    <button className="challenge-action-btn">
-                                        {challenge.status === 'solved' ? (
-                                            <>
-                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" strokeWidth="2" />
-                                                    <circle cx="12" cy="12" r="3" strokeWidth="2" />
-                                                </svg>
-                                                LOCATE
-                                            </>
-                                        ) : (
-                                            <>
-                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                </svg>
-                                                {challenge.difficulty === 'EASY' ? 'DECRYPT' : challenge.difficulty === 'MEDIUM' ? 'HACK' : 'REVERSE'}
-                                            </>
-                                        )}
-                                    </button>
+                                    <span className="challenge-action-text">
+                                        View Challenge →
+                                    </span>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
 
